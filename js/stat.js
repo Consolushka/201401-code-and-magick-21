@@ -11,23 +11,6 @@ const TEXT_WIDTH = 80;
 const MAX_BAR_HEIGHT = CLOUD_HEIGHT - TEXT_HEIGHT * 4 - GAP;
 const barWidth = 20;
 let MAX_SCORE;
-const gamers = [
-  {
-    name: `Вы`,
-    score: getRandomInt(1000),
-    color: `rgba(255, 0, 0, 1)`
-  }
-];
-
-for (let i = 0; i < 4; i++) {
-  gamers.push(
-      {
-        name: NAMES[getRandomInt(7)],
-        score: getRandomInt(1000),
-        color: `hsl(246, ${getRandomInt(100)}%, 50%)`
-      }
-  );
-}
 
 function getRandomInt(max) {
   return Math.floor(Math.random() * Math.floor(max));
@@ -55,6 +38,23 @@ function getMinValue(values, keyName) {
 }
 
 window.renderStatistics = function (ctx) {
+  const gamers = [
+    {
+      name: `Вы`,
+      score: getRandomInt(1000),
+      color: `rgba(255, 0, 0, 1)`
+    }
+  ];
+
+  for (let i = 0; i < 4; i++) {
+    gamers.push(
+        {
+          name: NAMES[getRandomInt(7)],
+          score: getRandomInt(1000),
+          color: `hsl(246, ${getRandomInt(100)}%, 50%)`
+        }
+    );
+  }
 
   MAX_SCORE = getMinValue(gamers, `score`);
   renderCloud(
